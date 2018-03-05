@@ -9,7 +9,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      availableLayer: false
+      availableLayer: true
     };
   }
 
@@ -61,7 +61,9 @@ class App extends Component {
           view.focus();
           let elements = document.getElementsByClassName('active');
           [...elements].map(ui => ui.classList.remove('active'));
-          (selectedButton) ? selectedButton.classList.add('active') : null;
+          if (selectedButton) {
+            selectedButton.classList.add('active');
+          }
         };
 
         sketchViewModel.on('draw-complete', evt => {
@@ -76,12 +78,12 @@ class App extends Component {
         const drawPolygonButton = document.getElementById('polygonButton');
         drawPolygonButton.onclick = () => {
           sketchViewModel.create('polygon');
-          setActiveButton(this);
+          setActiveButton(drawPolygonButton);
         };
 
         const dropPolygonButton = document.getElementById('deleteBtn');
         dropPolygonButton.onclick = () => {
-          setActiveButton(this);
+          setActiveButton(dropPolygonButton);
         };
 
       });
