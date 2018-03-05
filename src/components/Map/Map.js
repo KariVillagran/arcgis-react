@@ -26,9 +26,6 @@ class App extends Component {
         featureLayer = new FeatureLayer({
           url: server.urlEndpoints.military
         });
-        this.setState({
-          availableLayer: true,
-        });
       } catch (e) {
         this.setState({
           availableLayer: false,
